@@ -33,10 +33,11 @@ Si vous souhaitez contribuer ou modifier ce projet, vous pouvez suivre ces étap
 
 1. Forkez le repository.
 2. Clonez votre fork localement :
-git clone https://github.com/abderemaneattoumanidev/local-authentication-form.git
-3. Créez une nouvelle branche pour vos modifications :
+   ```bash
+   git clone https://github.com/abderemaneattoumanidev/local-authentication-form.git
+4. Créez une nouvelle branche pour vos modifications :
 git checkout -b ma-branche
-4. Faites vos modifications et testez-les.
-5. Soumettez une Pull Request pour proposer vos changements.
+5. Faites vos modifications et testez-les.
+6. Soumettez une Pull Request pour proposer vos changements.
 
 Merci d'avoir découvert ce projet ! J'espère qu'il vous aidera à créer un formulaire d'authentification fonctionnel en local.
