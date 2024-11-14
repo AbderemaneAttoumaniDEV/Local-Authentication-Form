@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Principale</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-gray-100 flex justify-center items-center min-h-screen">
+    <div class="flex justify-center items-center w-full h-full">
+        <div class="bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl p-10 w-full max-w-3xl">
+            <!-- Contenu principal -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-xl">
+                <!-- Salutation avec prénom et nom -->
+                <h1 class="text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-6">
+                    Bonjour <span id="user-name" class="text-blue-500"></span> !
+                </h1>
+
+                <div class="text-center mb-8">
+                    <p class="text-lg text-gray-700 dark:text-gray-300">Bienvenue sur votre espace personnel. Voici quelques fonctionnalités disponibles :</p>
+                </div>
+
+                <!-- Options -->
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                        <span class="text-lg text-gray-800 dark:text-gray-200">Gestion de votre profil</span>
+                        <button id="edit-profile-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            Modifier le profil
+                        </button>
+                    </div>
+                    <div class="flex justify-between items-center p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                        <span class="text-lg text-gray-800 dark:text-gray-200">Paramètres de sécurité</span>
+                        <button id="edit-password-btn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            Modifier le mot de passe
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bouton de déconnexion -->
+                <div class="mt-10 text-center">
+                    <button id="logout-btn" class="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+                        Se déconnecter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Modifier le profil -->
+    <div id="edit-profile-popup" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex justify-center items-center w-full h-full">
+        <div class="bg-white p-8 rounded-lg shadow-xl w-1/3 animate__animated animate__fadeIn">
+            <h2 class="text-xl text-gray-800 dark:text-gray-200 font-bold text-center mb-4">Modifier Profil</h2>
+            <form id="edit-profile-form" class="space-y-4">
+                <div>
+                    <label for="edit-first-name" class="block text-gray-700">Prénom</label>
+                    <input type="text" id="edit-first-name" class="text-gray-300 w-full p-3 border rounded-lg" />
+                </div>
+                <div>
+                    <label for="edit-last-name" class="block text-gray-700">Nom</label>
+                    <input type="text" id="edit-last-name" class="text-gray-300 w-full p-3 border rounded-lg" />
+                </div>
+                <div>
+                    <label for="edit-email" class="block text-gray-700">Email</label>
+                    <input type="email" id="edit-email" class="text-gray-300 w-full p-3 border rounded-lg" />
+                </div>
+                <div class="text-center mt-6">
+                    <button type="submit" id="profil-edit-save" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Enregistrer</button>
+                    <button id="close-edit-profile" class="ml-4 text-gray-500 hover:text-gray-700">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pop-up Modifier le mot de passe -->
+    <div id="edit-password-popup" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex justify-center items-center w-full h-full">
+        <div class="bg-white p-8 rounded-lg shadow-xl w-1/3 animate__animated animate__fadeIn">
+            <h2 class="text-xl text-gray-800 dark:text-gray-200 font-bold text-center mb-4">Modifier Mot de Passe</h2>
+            <form id="edit-password-form" class="space-y-4">
+                <div>
+                    <label for="edit-password" class="block text-gray-700">Nouveau Mot de Passe</label>
+                    <input type="" id="edit-password" class="text-gray-600 w-full p-3 border rounded-lg" />
+                </div>
+                <div class="text-center mt-6">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Enregistrer</button>
+                    <button id="close-edit-password" class="ml-4 text-gray-500 hover:text-gray-700">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pop-up de confirmation de modification -->
+    <div id="confirmation-popup" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex justify-center items-center w-full h-full">
+        <div class="bg-white p-8 rounded-lg shadow-xl w-1/3 animate__animated animate__fadeIn">
+            <h2 class="text-lg text-gray-700 font-semibold text-center mb-4">Modification réussie</h2>
+            <p class="text-center text-gray-700">Vos modifications ont été enregistrées avec succès.</p>
+            <div class="text-center mt-6">
+                <button id="close-confirmation" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Alerte Mot de Passe Trop Court -->
+<div id="password-alert-popup" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex justify-center items-center w-full h-full">
+    <div class="bg-white p-8 rounded-lg shadow-xl w-1/3 animate__animated animate__fadeIn">
+        <h2 class="text-lg text-red-500 font-semibold text-center mb-4">Mot de passe trop court</h2>
+        <p class="text-center text-gray-700">Votre mot de passe doit contenir au moins 6 caractères.</p>
+        <div class="text-center mt-6">
+            <button id="close-password-alert" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">Fermer</button>
+        </div>
+    </div>
+</div>
+
+    <!-- Pop-up Aucune modification -->
+<div id="no-modification-popup" class="fixed inset-0 bg-gray-800 bg-opacity-50 hidden flex justify-center items-center w-full h-full">
+    <div class="bg-white p-8 rounded-lg shadow-xl w-1/3 animate__animated animate__fadeIn">
+        <h2 class="text-lg text-gray-700 font-semibold text-center mb-4">Aucune modification</h2>
+        <p class="text-center text-gray-700">Aucune modification n'a été effectuée.</p>
+        <div class="text-center mt-6">
+            <button id="close-no-modification" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">Fermer</button>
+        </div>
+    </div>
+</div>
+
+
+    <script src="./src/js/home.js"></script>
+</body>
+</html>
