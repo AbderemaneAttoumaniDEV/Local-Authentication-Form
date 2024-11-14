@@ -16,7 +16,7 @@ Ce projet propose un formulaire d'authentification (connexion et inscription) qu
 ## 🛠️ Technologies utilisées
 
 - **HTML5** : Structure du site
-- **CSS3** : Mise en page et style
+- **CSS3 avec TailwindCSS** : Mise en page et style
 - **JavaScript** : Gestion de la logique d'authentification et interactions utilisateurs
 - **LocalStorage** : Stockage local des données utilisateur
 
